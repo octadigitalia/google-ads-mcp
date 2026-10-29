@@ -200,10 +200,65 @@ Integra diretamente com a **Google Ads API (v23)** disponibilizando **92 ferrame
 
 ## ⚙️ Conexão nos Clientes MCP
 
-### Antigravity / Cursor / Claude Code (`mcp_config.json`)
+O servidor pode ser consumido em dois modos:
+1. **Modo Remoto (Recomendado):** Servidor hospedado na nuvem (Coolify ou Docker) ou rodando localmente via `start_worker.py` (transporte HTTP Streamable ou SSE).
+2. **Modo Local (stdio):** Execução direta via Python gerenciada pelo próprio cliente MCP.
 
-Para conectar ao servidor rodando na nuvem (Coolify):
+---
 
+### 1. Claude Desktop
+
+Abra o arquivo de configuração do Claude Desktop:
+* **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+* **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+
+#### Opção A: Servidor Remoto (Coolify / SSE)
+```json
+{
+  "mcpServers": {
+    "google-ads": {
+      "url": "https://SEU-DOMINIO/sse?token=SEU_MCP_AUTH_TOKEN"
+    }
+  }
+}
+```
+
+#### Opção B: Execução Local Direta (stdio)
+```json
+{
+  "mcpServers": {
+    "google-ads": {
+      "command": "python",
+      "args": ["-m", "src.mcp_server.worker"],
+      "env": {
+        "GOOGLE_ADS_DEVELOPER_TOKEN": "SEU_DEVELOPER_TOKEN",
+        "GOOGLE_ADS_CLIENT_ID": "SEU_CLIENT_ID",
+        "GOOGLE_ADS_CLIENT_SECRET": "SEU_CLIENT_SECRET",
+        "GOOGLE_ADS_REFRESH_TOKEN": "SEU_REFRESH_TOKEN",
+        "GOOGLE_ADS_LOGIN_CUSTOMER_ID": "SEU_LOGIN_CUSTOMER_ID"
+      }
+    }
+  }
+}
+```
+
+---
+
+### 2. Cursor
+
+No Cursor, você pode configurar via interface visual ou via arquivo no workspace:
+
+#### Via Interface (Settings):
+1. Acesse **Settings** > **Features** > **MCP Servers**.
+2. Clique em **Add New MCP Server**.
+3. Preencha:
+   * **Name:** `google-ads`
+   * **Type:** `sse` (ou `command` para execução local)
+   * **URL:** `https://SEU-DOMINIO/sse?token=SEU_MCP_AUTH_TOKEN` (ou `http://127.0.0.1:8765/sse` se local)
+
+#### Via Arquivo `.cursor/mcp.json` no Workspace:
+
+**Conexão Remota (HTTP / SSE):**
 ```json
 {
   "mcpServers": {
@@ -218,26 +273,39 @@ Para conectar ao servidor rodando na nuvem (Coolify):
 }
 ```
 
-### Claude Desktop (`claude_desktop_config.json`)
-
+**Conexão Local (stdio):**
 ```json
 {
   "mcpServers": {
     "google-ads": {
-      "url": "https://SEU-DOMINIO/sse?token=SEU_MCP_AUTH_TOKEN"
+      "command": "python",
+      "args": ["-m", "src.mcp_server.worker"],
+      "env": {
+        "GOOGLE_ADS_DEVELOPER_TOKEN": "SEU_DEVELOPER_TOKEN",
+        "GOOGLE_ADS_CLIENT_ID": "SEU_CLIENT_ID",
+        "GOOGLE_ADS_CLIENT_SECRET": "SEU_CLIENT_SECRET",
+        "GOOGLE_ADS_REFRESH_TOKEN": "SEU_REFRESH_TOKEN",
+        "GOOGLE_ADS_LOGIN_CUSTOMER_ID": "SEU_LOGIN_CUSTOMER_ID"
+      }
     }
   }
 }
 ```
 
-### Conexão Local (Desenvolvimento)
+---
 
+### 3. Antigravity e Claude Code
+
+No arquivo `mcp_config.json` ou `~/.claude.json`:
 ```json
 {
   "mcpServers": {
     "google-ads": {
       "type": "http",
-      "url": "http://127.0.0.1:8765/mcp"
+      "url": "https://SEU-DOMINIO/mcp",
+      "headers": {
+        "Authorization": "Bearer SEU_MCP_AUTH_TOKEN"
+      }
     }
   }
 }
@@ -264,7 +332,7 @@ O repositório já possui configuração completa com Dockerfile otimizado:
 ```bash
 # 1. Clonar repositório
 git clone https://github.com/octadigitalia/google-ads-mcp.git
-cd google-ads-mcp-server
+cd google-ads-mcp
 
 # 2. Criar e ativar venv
 python -m venv .venv
@@ -274,20 +342,21 @@ python -m venv .venv
 # 3. Instalar dependências
 pip install -r requirements.txt
 
-# 4. Iniciar servidor
+# 4. Configurar variáveis de ambiente
+cp .env.example .env
+# Preencha suas credenciais no arquivo .env
+
+# 5. Iniciar servidor worker
 python start_worker.py
 ```
 
 ---
 
-## 🧪 Testes Automatizados
+## 🧪 Validação & Healthcheck
 
-O projeto conta com suíte de testes unitários com mocks completos da Google Ads API:
-
-```bash
-# Executar todos os testes
-python -m pytest tests/unit/test_new_tools.py -v
-```
+Após iniciar o servidor:
+* **Healthcheck HTTP:** `curl http://localhost:8765/health` (retorna `{"status": "healthy"}`)
+* **Validação MCP:** No cliente de IA (Claude, Cursor ou Antigravity), execute a ferramenta `check_connection` para validar a prontidão da conexão com a Google Ads API.
 
 ---
 
