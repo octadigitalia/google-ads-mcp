@@ -7,23 +7,23 @@
   "skills": [
     {
       "file": "google-ads-expert.md",
-      "use_case": "Gestão geral — diagnóstico, auditoria completa, arsenal de 77 tools"
+      "use_case": "Gestão geral: diagnóstico, auditoria completa, arsenal de 77 tools"
     },
     {
       "file": "growth-marketing.md",
-      "use_case": "Growth Marketing — escala de negócios, CAC/LTV, ICE Score, alocação de budget"
+      "use_case": "Growth Marketing: escala de negócios, CAC/LTV, ICE Score, alocação de budget"
     },
     {
       "file": "launch-formula.md",
-      "use_case": "Fórmula de Lançamento — PLF, pré-lançamento, carrinho aberto/fechado"
+      "use_case": "Fórmula de Lançamento: PLF, pré-lançamento, carrinho aberto/fechado"
     },
     {
       "file": "low-ticket.md",
-      "use_case": "Low Ticket — produtos R$27-197, volume, CPA baixo, PMax"
+      "use_case": "Low Ticket: produtos R$27-197, volume, CPA baixo, PMax"
     },
     {
       "file": "vsl-funnel.md",
-      "use_case": "Funil VSL — vídeo de vendas longo, retargeting em camadas por profundidade"
+      "use_case": "Funil VSL: vídeo de vendas longo, retargeting em camadas por profundidade"
     }
   ],
   "mcp_server": {

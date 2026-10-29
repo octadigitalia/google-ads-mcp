@@ -1973,7 +1973,7 @@ def bulk_pause_keywords(
 
 
 # ─────────────────────────────────────────────
-# TIER 1 — RELATÓRIOS POR DIMENSÃO
+# TIER 1: RELATÓRIOS POR DIMENSÃO
 # ─────────────────────────────────────────────
 
 def get_device_performance(customer_id: str, date_range: str = "LAST_30_DAYS", campaign_id: str = None) -> dict:
@@ -2182,7 +2182,7 @@ def get_audience_performance(customer_id: str, date_range: str = "LAST_30_DAYS",
 
 
 # ─────────────────────────────────────────────
-# TIER 1 — TARGETING & AJUSTES
+# TIER 1: TARGETING & AJUSTES
 # ─────────────────────────────────────────────
 
 def set_device_bid_adjustment(customer_id: str, campaign_id: str, device: str, modifier: float) -> dict:
@@ -2471,7 +2471,7 @@ def list_labels(customer_id: str) -> dict:
 
 
 # ─────────────────────────────────────────────
-# TIER 2 — ESTRATÉGIAS DE LANCE
+# TIER 2: ESTRATÉGIAS DE LANCE
 # ─────────────────────────────────────────────
 
 def list_bid_strategies(customer_id: str) -> dict:
@@ -2845,7 +2845,7 @@ def link_shared_negative_list(customer_id: str, campaign_id: str, shared_set_id:
 
 
 # ─────────────────────────────────────────────
-# TIER 3 — DIFERENCIAL COMPETITIVO
+# TIER 3: DIFERENCIAL COMPETITIVO
 # ─────────────────────────────────────────────
 
 def get_reach_forecast(customer_id: str, keywords: list, daily_budget: float, date_range_days: int = 30) -> dict:

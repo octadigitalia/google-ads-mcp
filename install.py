@@ -11,7 +11,7 @@ SKILLS = {
         "name": "Google Ads Expert (Master)",
         "files": ["skills/google-ads-expert.md", "skills/audit-workflow.md", "skills/google-ads-expert.json", "README.md"],
         "zip": "google-ads-expert-skill.zip",
-        "description": "Gestao geral — 77 tools, auditoria completa, log de acoes"
+        "description": "Gestao geral: 77 tools, auditoria completa, log de acoes"
     },
     "2": {
         "name": "Growth Marketing",
@@ -53,7 +53,7 @@ SKILLS = {
 
 def print_banner():
     print("\n" + "=" * 62)
-    print("  Google Ads Expert AI Skill — Installer v4.0")
+    print("  Google Ads Expert AI Skill: Installer v4.0")
     print("=" * 62 + "\n")
 
 
@@ -93,7 +93,7 @@ def ensure_campaign_log_dir():
 
 def select_mode() -> str:
     print("Onde voce vai rodar o worker?\n")
-    print("  [1] Local (minha maquina — Claude Desktop ou Claude Code)")
+    print("  [1] Local (minha maquina: Claude Desktop ou Claude Code)")
     print("  [2] VPS / Servidor Linux (acesso remoto)\n")
     return input("Escolha (1/2): ").strip()
 
@@ -134,14 +134,14 @@ def install_local():
     print("\n1. INICIAR O WORKER (em um terminal separado):")
     print("     python start_worker.py")
 
-    print("\n2. CLAUDE DESKTOP — cole em claude_desktop_config.json:")
+    print("\n2. CLAUDE DESKTOP: cole em claude_desktop_config.json:")
     print(json.dumps(mcp_config, indent=4))
 
-    print("\n3. CLAUDE CODE (CLI) — cole em ~/.claude.json:")
+    print("\n3. CLAUDE CODE (CLI): cole em ~/.claude.json:")
     print(json.dumps({"mcpServers": mcp_config["mcpServers"]}, indent=4))
 
     if zip_file:
-        print(f"\n4. CLAUDE WEB — faca upload de: {zip_file}")
+        print(f"\n4. CLAUDE WEB: faca upload de: {zip_file}")
         print("   Settings > Skills ou adicione ao seu Project.")
 
     print("\nPROXIMO PASSO: No chat, diga 'check_connection'")
@@ -260,9 +260,9 @@ server {{
     print("  ARQUIVOS GERADOS")
     print("=" * 62)
 
-    print(f"\n  {service_file} — servico systemd")
+    print(f"\n  {service_file}: servico systemd")
     if use_nginx:
-        print(f"  {nginx_file} — configuracao nginx")
+        print(f"  {nginx_file}: configuracao nginx")
 
     print("\n" + "=" * 62)
     print("  PASSOS NO SERVIDOR VPS")

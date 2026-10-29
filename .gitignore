@@ -166,7 +166,7 @@ custom_bundle.pem
 campaign-log/*.md
 !campaign-log/.gitkeep
 
-# AIOS Framework (development tooling — not part of the MCP server)
+# AIOS Framework (development tooling, not part of the MCP server)
 .aios/
 .aios-core/
 .agent/

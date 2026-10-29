@@ -1,5 +1,5 @@
 """
-Google Ads Expert Worker — Hardened Cloud Edition.
+Google Ads Expert Worker: Hardened Cloud Edition.
 Streamable HTTP (POST /mcp), SSE (GET /sse), Rate Limiting, Obfuscation & Security Guard.
 """
 import sys
@@ -29,7 +29,7 @@ except Exception:
     pass
 
 print("=" * 60)
-print("Google Ads Expert Worker — Hardened Edition")
+print("Google Ads Expert Worker: Hardened Edition")
 print(f"Host: {host} | Port: {port}")
 print(f"Auth Token: {'Configured (Protected)' if auth_token else 'Public/Local'}")
 print("Security: Non-Root, Rate-Limited, Anti-Indexing, Stealth Root")
