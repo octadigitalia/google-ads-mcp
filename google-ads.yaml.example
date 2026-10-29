@@ -1,0 +1,10 @@
+# Configuração da API do Google Ads
+# Renomeie este arquivo para google-ads.yaml e preencha com suas credenciais.
+
+developer_token: "SEU_DEVELOPER_TOKEN"
+client_id: "SEU_CLIENT_ID"
+client_secret: "SEU_CLIENT_SECRET"
+refresh_token: "SEU_REFRESH_TOKEN"
+# O ID da conta do cliente (MCC ou Conta Individual) sem hifens.
+login_customer_id: "SEU_LOGIN_CUSTOMER_ID"
+use_proto_plus: true

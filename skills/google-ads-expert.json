@@ -1,0 +1,62 @@
+{
+  "name": "Google Ads Expert",
+  "version": "4.0.0",
+  "description": "Gestor de Tráfego Sênior com acesso a 77 tools da Google Ads API. Auditoria completa, gestão de campanhas, pesquisa de keywords, otimização e estratégias especializadas.",
+  "author": "Octa Digitalia",
+  "homepage": "https://github.com/octadigitalia/google-ads-mcp",
+  "skills": [
+    {
+      "file": "google-ads-expert.md",
+      "use_case": "Gestão geral — diagnóstico, auditoria completa, arsenal de 77 tools"
+    },
+    {
+      "file": "growth-marketing.md",
+      "use_case": "Growth Marketing — escala de negócios, CAC/LTV, ICE Score, alocação de budget"
+    },
+    {
+      "file": "launch-formula.md",
+      "use_case": "Fórmula de Lançamento — PLF, pré-lançamento, carrinho aberto/fechado"
+    },
+    {
+      "file": "low-ticket.md",
+      "use_case": "Low Ticket — produtos R$27-197, volume, CPA baixo, PMax"
+    },
+    {
+      "file": "vsl-funnel.md",
+      "use_case": "Funil VSL — vídeo de vendas longo, retargeting em camadas por profundidade"
+    }
+  ],
+  "mcp_server": {
+    "transport": "sse",
+    "url": "http://127.0.0.1:8765/sse",
+    "start_command": "python start_worker.py"
+  },
+  "mcp_config_stdio": {
+    "mcpServers": {
+      "google-ads-expert": {
+        "command": "python",
+        "args": ["CAMINHO_DO_PROJETO/src/mcp_server/worker.py"],
+        "env": {
+          "PYTHONPATH": "CAMINHO_DO_PROJETO"
+        }
+      }
+    }
+  },
+  "tools_count": 77,
+  "tool_categories": [
+    "Setup & Utilidades (3)",
+    "Relatórios & Auditoria (14)",
+    "Pesquisa de Keywords (4)",
+    "Criação Atômica (5)",
+    "Criação por Conveniência (2)",
+    "Targeting & Segmentação (6)",
+    "Estratégias de Lance (5)",
+    "Otimização / Mutações (12)",
+    "Extensões / Assets (6)",
+    "Conversões (3)",
+    "Organização / Labels (3)",
+    "Audiências (3)",
+    "Features Avançadas (7)",
+    "Faturamento (2)"
+  ]
+}
